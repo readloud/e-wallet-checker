@@ -1,0 +1,42 @@
+server:
+  port: ":8080"
+  read_timeout: 10s
+  write_timeout: 10s
+  idle_timeout: 120s
+  max_header_bytes: 1048576
+
+database:
+  host: localhost
+  port: 5432
+  user: ewallet_user
+  password: ${DB_PASSWORD}
+  dbname: ewallet_prod
+  ssl_mode: require
+  max_open_conns: 100
+  max_idle_conns: 10
+  conn_max_lifetime: 3600
+
+redis:
+  host: localhost
+  port: 6379
+  password: ${REDIS_PASSWORD}
+  db: 0
+  pool_size: 50
+
+security:
+  api_key: ${API_KEY}
+  jwt_secret: ${JWT_SECRET}
+  enable_cors: true
+  allowed_origins:
+    - "https://api.ewallet.com"
+    - "https://ewallet.com"
+
+rate_limit:
+  enabled: true
+  requests_per_second: 100
+  burst: 200
+
+log:
+  level: info
+  encoding: json
+  output: stdout
