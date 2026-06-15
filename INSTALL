@@ -1,0 +1,41 @@
+## 📋 Cara Menjalankan
+
+```bash
+npm install
+npm run generate:keys
+npm run migrate
+npm run prod
+
+## Environment Variables yang Wajib Diisi
+
+- `DB_HOST`, `DB_PASSWORD`
+- `REDIS_HOST`
+- `JWT_SECRET`, `SESSION_SECRET`
+- `TOKEN_ENCRYPTION_KEY` (32 chars)
+- `DANA_CLIENT_ID`, `DANA_CLIENT_SECRET` (setelah onboarding)
+- `SHOPEEPAY_MERCHANT_ID`, `SHOPEEPAY_SECRET_KEY`
+- `QRIS_PROVIDER` (interactive/doku/midtrans)
+- API Key dari provider yang dipilih
+- `QRIS_WEBHOOK_SECRET` (32 chars)
+```
+
+---
+
+## 📊 Ringkasan API Endpoints
+
+| Method | Endpoint | Fungsi |
+|--------|----------|--------|
+| POST | `/api/qris/generate` | Generate QRIS payment |
+| GET | `/api/qris/status/:orderId` | Check payment status |
+| GET | `/api/qris/image/:orderId` | Get QR code image |
+| POST | `/api/qris/webhook` | Webhook notification |
+| POST | `/api/v1/auth/register` | Register user |
+| POST | `/api/v1/auth/login` | Login user |
+| GET | `/api/v1/dana/connect` | Initiate DANA OAuth |
+| GET | `/api/v1/dana/callback` | DANA OAuth callback |
+| GET | `/api/v1/dana/profile` | Get DANA nickname |
+| DELETE | `/api/v1/dana/disconnect` | Disconnect DANA |
+| POST | `/api/v1/shopeepay/connect` | Initiate ShopeePay OAuth |
+| GET | `/api/v1/shopeepay/callback` | ShopeePay callback |
+| GET | `/api/v1/shopeepay/profile` | Get ShopeePay nickname |
+| DELETE | `/api/v1/shopeepay/disconnect` | Disconnect ShopeePay |
